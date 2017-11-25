@@ -48,7 +48,7 @@ class StoragedGood(models.Model):
 class Reservation(models.Model):
     start_date = models.DateTimeField('start date of the reservation')
     end_date = models.DateTimeField('end date of the reservation')
-    return_date = models.DateTimeField('date of return')
+    return_date = models.DateTimeField('date of return', blank=True, null=True)
     customer_id = models.ForeignKey(Customer)
     good_id = models.ForeignKey(Good)
 
