@@ -32,6 +32,13 @@ def catalogue_goods(request):
     return HttpResponse(template.render({'good_items' : items}, request))
 
 
+def search_items(request):
+    search_query = 'knife'
+    items = Good.objects.filter(good_info__contains=search_query)
+    template = loader.get_template('things/catalogue_goods.html')
+    return HttpResponse(template.render({'good_items' : items}, request))
+
+
 def return_good_to_owner(request):
     pk = 1
     good = Good.objects.get(pk=pk)
