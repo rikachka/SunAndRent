@@ -34,7 +34,7 @@
     <div class="item">
         <div class="item-flex-container">
             <div class="item-picture">
-                <img src="{% static 'images/square.png' %}" height="100px">
+                <img src={% static item.image_path %} height="100px">
             </div>
             <div class="item-info">
                 <div><h3>{{ item.title }}</h3></div>
