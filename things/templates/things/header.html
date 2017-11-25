@@ -1,13 +1,29 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 1em 0;
+        }
+
+        .avatar {
+            margin: 0 7px;
+        }
+
+        .header-items-block {
+        }
+    </style>
 </head>
 <body>
-    <div align="right">
-        <img src="https://c.disquscdn.com/uploads/users/23070/1193/avatar92.jpg?1479654029" height="20px">
-        Ivanov Ivan
+    <div class="header">
+        <div class="avatar"><img src="{% static 'images/user.svg' %}" height="20px"></div>
+        <div class="header-items-block">John Snow</div>
     </div>
 </body>
 </html>
