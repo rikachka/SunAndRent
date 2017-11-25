@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Good, Customer, StoragedGood, Reservation
 from django.urls import reverse
+from django.utils import timezone
 
 
 CUSTOMER_INDEX = 1
@@ -57,9 +58,18 @@ def search_items_goods(request):
     return HttpResponse(template.render({'good_items' : items}, request))
 
 
-def return_good_to_owner(request, item_pk):
+def receive_back_item(request, item_pk):
     good = Good.objects.filter(pk=item_pk).update(status='1')
     return HttpResponseRedirect(reverse('catalogue_stored'))
+
+
+def rent_item(request, item_pk):
+    reservation = Reservation(start_date=timezone.now(),
+                              end_date=timezone.now(),
+                              customer_id=Customer.objects.get(pk=CUSTOMER_INDEX),
+                              good_id=Good.objects.get(pk=item_pk))
+    reservation.save()
+    return HttpResponseRedirect(reverse('catalogue_goods'))
 
 
 def reset_status(request):

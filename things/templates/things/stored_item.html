@@ -56,7 +56,7 @@
                 <br>
                 <div>Stored since: {{ item.start_date }}</div>
             </div>
-            <form action="{% url 'return_good_to_owner' item.pk %}" method="post">
+            <form action="{% url 'receive_back_item' item.pk %}" method="post">
                 {% csrf_token %}
                 <div><button class="item-button">Receive back</button></div>
             </form>
