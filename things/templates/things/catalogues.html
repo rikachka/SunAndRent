@@ -13,9 +13,10 @@
 
             .catalogues-block {
                 background-color: coral;
-                width: 12em;
+                width: 14em;
                 padding: 3%;
                 text-align: center;
+                border: 1px solid black;
             }
         </style>
     </head>
@@ -25,6 +26,11 @@
             <div class="catalogues-block" onclick="catalogues_all()">Catalogue</div>
             <div class="catalogues-block" onclick="catalogues_storage()">Storage</div>
             <div class="catalogues-block" onclick="catalogues_rent()">Rent</div>
+        </div>
+
+        <div class="container">
+            {% block items_block %}
+            {% endblock %}
         </div>
     </body>
     </html>
