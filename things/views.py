@@ -13,7 +13,16 @@ def catalogue_stored(request):
     owner = Customer.objects.get(pk=index)
     items = StoragedGood.objects.filter(good_id__owner_id=owner)
     template = loader.get_template('things/catalogue_stored.html')
-    return HttpResponse(template.render({'items' : items}, request))
+    return HttpResponse(template.render({'stored_items' : items}, request))
+
+
+def catalogue_rented(request):
+    index = 1
+    owner = Customer.objects.get(pk=index)
+    items = StoragedGood.objects.filter(good_id__owner_id=owner)
+    template = loader.get_template('things/catalogue_stored.html')
+    return HttpResponse(template.render({'rented_items' : items}, request))
+
 
 def index2(request):
     return HttpResponse("Hello, world. You're at the index2.")
