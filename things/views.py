@@ -50,3 +50,9 @@ def reset_status(request):
     owner = Customer.objects.get(pk=CUSTOMER_INDEX)
     Good.objects.filter(owner_id=owner).update(status='0')
     return HttpResponse("Status set to 'At service'")
+
+
+def item_stored_fullinfo(request):
+    item = StoragedGood.objects.get(pk=1)
+    template = loader.get_template('things/item_stored_fullinfo.html')
+    return HttpResponse(template.render({'item' : item}, request))
