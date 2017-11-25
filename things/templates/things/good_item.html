@@ -54,7 +54,10 @@
                     <br> Description description description
                 </div>
             </div>
-            <div><button class="item-button">Rent</button></div>
+            <form action="{% url 'rent_item' item.pk %}" method="post">
+                {% csrf_token %}
+                <div><button class="item-button">Rent</button></div>
+            </form>
         </div>
     </div>
 </body>
