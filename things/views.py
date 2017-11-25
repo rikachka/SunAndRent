@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Good, Customer, StoragedGood
+from .models import Good, Customer, StoragedGood, Reservation
+
 
 def catalogues(request):
     template = loader.get_template('things/catalogues.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
 
 def catalogue_stored(request):
     index = 1
@@ -17,17 +19,14 @@ def catalogue_stored(request):
 
 
 def catalogue_rented(request):
-    index = 1
-    owner = Customer.objects.get(pk=index)
-    items = StoragedGood.objects.filter(good_id__owner_id=owner)
-    template = loader.get_template('things/catalogue_stored.html')
+    index = 2
+    customer = Customer.objects.get(pk=index)
+    items = Reservation.objects.filter(customer_id=customer)
+    template = loader.get_template('things/catalogue_rented.html')
     return HttpResponse(template.render({'rented_items' : items}, request))
 
 
-def index2(request):
-    return HttpResponse("Hello, world. You're at the index2.")
-
-def get_stored_by_person_id(request):
-    owner = Customer.objects.get(pk=request['id'])
-    items = StoredGood.objects.filter(ownwer_id=owner)
-    return items
+def catalogue_goods(request):
+    items = Good.objects.all()
+    template = loader.get_template('things/catalogue_goods.html')
+    return HttpResponse(template.render({'good_items' : items}, request))

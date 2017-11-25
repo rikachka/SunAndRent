@@ -12,10 +12,10 @@
         </style>
     </head>
     <body>
-        <div><h2>Storage</h2></div>
+        <div>Storage</div>
         <textarea class="search" placeholder="Search" rows="1"></textarea>
-        {% for item in stored_items %}
-            {% include "things/stored_item.html" %}
+        {% for item in good_items %}
+            {% include "things/good_item.html" %}
         {% endfor %}
     </body>
     </html>
