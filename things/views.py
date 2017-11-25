@@ -68,7 +68,7 @@ def reset_status(request):
     return HttpResponse("Status set to 'At service'")
 
 
-def item_stored_fullinfo(request):
-    item = StoragedGood.objects.get(pk=1)
+def item_stored_fullinfo(request, item_pk):
+    item = StoragedGood.objects.get(pk=item_pk)
     template = loader.get_template('things/item_stored_fullinfo.html')
     return HttpResponse(template.render({'item' : item}, request))
