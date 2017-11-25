@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Good, Customer, StoragedGood, Reservation
+from django.urls import reverse
 
 
 def catalogues(request):
@@ -11,6 +12,9 @@ def catalogues(request):
 
 
 def catalogue_stored(request):
+    # good = Good.objects.get(pk=1)
+    # good.status = '0'
+    # good.save()
     index = 1
     owner = Customer.objects.get(pk=index)
     items = StoragedGood.objects.filter(good_id__status='0').filter(good_id__owner_id=owner)
@@ -32,9 +36,8 @@ def catalogue_goods(request):
     return HttpResponse(template.render({'good_items' : items}, request))
 
 
-def return_good_to_owner(request):
-    pk = 1
-    good = Good.objects.get(pk=pk)
+def return_good_to_owner(request, item_pk):
+    good = Good.objects.get(pk=item_pk)
     good.status = '1'
     good.save()
-    return HttpResponse(template.render({}, request))
+    return HttpResponseRedirect(reverse('catalogue_stored'))
