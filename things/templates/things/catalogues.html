@@ -30,13 +30,13 @@
     </html>
     <script>
         function catalogues_all() {
-            window.location.replace("{% url 'catalogue_goods' %}");
+            window.location.href = "{% url 'catalogue_goods' %}";
         }
         function catalogues_storage() {
-            window.location.replace("{% url 'catalogue_stored' %}");
+            window.location.href = "{% url 'catalogue_stored' %}";
         }
         function catalogues_rent() {
-            window.location.replace("{% url 'catalogue_rented' %}");
+            window.location.href = "{% url 'catalogue_rented' %}";
         }
     </script>
 {% endblock %}
