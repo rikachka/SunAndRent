@@ -34,6 +34,9 @@
             .item-picture {
                 margin: 0 20px 0 0;
             }
+            .item-description {
+                margin: 0 20px 0 0;
+            }
         </style>
 </head>
 <body>
@@ -48,10 +51,8 @@
                         <h3>{{ item.good_id.title }}</h3>
                     </a>
                 </div>
-                <div>
+                <div class="item-description">
                     {{ item.good_id.good_info }}
-                    <br> Description description description
-                    <br> Description description description
                 </div>
                 <br>
                 <div>Rented from {{ item.start_date }} to {{ item.end_date }}</div>
