@@ -43,7 +43,8 @@
                     <br> Description description description
                     <br> Description description description
                 </div>
-                <div>Stored since {{ item.start_date }}</div>
+                <br>
+                <div>Stored since: {{ item.start_date }}</div>
             </div>
             <form action="{% url 'return_good_to_owner' item.pk %}" method="post">
                 {% csrf_token %}
