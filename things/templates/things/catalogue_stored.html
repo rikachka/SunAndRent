@@ -6,19 +6,6 @@
         <meta charset="UTF-8">
         <title>Title</title>
         <style>
-            .flex-container {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .items-block {
-                background-color: blue;
-                width: 50%;
-                margin: 1%;
-                padding: 3%;
-                text-align: center;
-            }
-
             .search {
                 width: 100%;
             }
@@ -27,11 +14,9 @@
     <body>
         <div>Storage</div>
         <textarea class="search" placeholder="Search" rows="1"></textarea>
-        <div class="flex-container">
-            <div class="items-block">Item1</div>
-            <div class="items-block">Item2</div>
-            <div class="items-block">Item3</div>
-        </div>
+        {% for item in items %}
+            {% include "things/catalogue_item.html" %}
+        {% endfor %}
     </body>
     </html>
 {% endblock %}
