@@ -13,9 +13,10 @@
 
             .catalogues-block {
                 background-color: coral;
-                width: 12em;
+                width: 14em;
                 padding: 3%;
                 text-align: center;
+                border: 1px solid black;
             }
         </style>
     </head>
@@ -26,17 +27,22 @@
             <div class="catalogues-block" onclick="catalogues_storage()">Storage</div>
             <div class="catalogues-block" onclick="catalogues_rent()">Rent</div>
         </div>
+
+        <div class="container">
+            {% block items_block %}
+            {% endblock %}
+        </div>
     </body>
     </html>
     <script>
         function catalogues_all() {
-            window.location.replace("{% url 'catalogue_goods' %}");
+            window.location.href = "{% url 'catalogue_goods' %}";
         }
         function catalogues_storage() {
-            window.location.replace("{% url 'catalogue_stored' %}");
+            window.location.href = "{% url 'catalogue_stored' %}";
         }
         function catalogues_rent() {
-            window.location.replace("{% url 'catalogue_rented' %}");
+            window.location.href = "{% url 'catalogue_rented' %}";
         }
     </script>
 {% endblock %}
