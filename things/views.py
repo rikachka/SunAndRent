@@ -15,9 +15,6 @@ def catalogues(request):
 
 
 def catalogue_stored(request):
-    # good = Good.objects.get(pk=1)
-    # good.status = '0'
-    # good.save()
     owner = Customer.objects.get(pk=CUSTOMER_INDEX)
     items = StoragedGood.objects.filter(good_id__status='0').filter(good_id__owner_id=owner)
     template = loader.get_template('things/catalogue_stored.html')
@@ -45,7 +42,11 @@ def search_items(request):
 
 
 def return_good_to_owner(request, item_pk):
-    good = Good.objects.get(pk=item_pk)
-    good.status = '1'
-    good.save()
+    good = Good.objects.get(pk=item_pk).update(status='1')
     return HttpResponseRedirect(reverse('catalogue_stored'))
+
+
+def reset_status(request):
+    owner = Customer.objects.get(pk=CUSTOMER_INDEX)
+    Good.objects.filter(owner_id=owner).update(status='0')
+    return HttpResponse("Status set to 'At service'")
