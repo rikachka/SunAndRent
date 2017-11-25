@@ -7,6 +7,13 @@ RESERVATION_TYPES = (
     ('2', 'is_declined')
 )
 
+GOOD_STATUS = (
+    ('0', 'at_service'),
+    ('1', 'at_home'),
+    ('2', 'damaged'),
+    ('3', 'lost')
+)
+
 
 class Customer(models.Model):
     login = models.CharField('login', max_length=200)
@@ -26,6 +33,7 @@ class Good(models.Model):
     good_info = models.CharField('good info', max_length=1000)
     reservation_type = models.CharField('type', max_length=1, choices=RESERVATION_TYPES)
     image_path = models.CharField('image', max_length=200)
+    status = models.CharField('status', max_length=1, choices=GOOD_STATUS)
     
     def __str__(self):
         return self.good_info

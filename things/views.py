@@ -13,7 +13,7 @@ def catalogues(request):
 def catalogue_stored(request):
     index = 1
     owner = Customer.objects.get(pk=index)
-    items = StoragedGood.objects.filter(good_id__owner_id=owner)
+    items = StoragedGood.objects.filter(good_id__status='0').filter(good_id__owner_id=owner)
     template = loader.get_template('things/catalogue_stored.html')
     return HttpResponse(template.render({'stored_items' : items}, request))
 
