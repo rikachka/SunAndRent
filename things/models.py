@@ -31,10 +31,5 @@ class Reservation(models.Model):
     start_date = models.DateTimeField('start date of the reservation')
     end_date = models.DateTimeField('end date of the reservation')
     customer_id = models.ForeignKey(Customer)
-
-
-class RentedGood(models.Model):
     good_id = models.ForeignKey(Good)
-    reservation_id = models.ForeignKey(Reservation)
-
 
