@@ -8,11 +8,17 @@ class Customer(models.Model):
     phone = models.CharField('phone number', max_length=20)
     email = models.CharField('e-mail', max_length=100)
     address = models.CharField('address', max_length=200)
+    
+    def __str__(self):
+        return self.login
 
 
 class Good(models.Model):
     owner_id = models.ForeignKey(Customer)
     good_info = models.CharField('good info', max_length=200)
+    
+    def __str__(self):
+        return self.good_info
 
 
 class StoragedGood(models.Model):
@@ -25,10 +31,5 @@ class Reservation(models.Model):
     start_date = models.DateTimeField('start date of the reservation')
     end_date = models.DateTimeField('end date of the reservation')
     customer_id = models.ForeignKey(Customer)
-
-
-class RentedGood(models.Model):
     good_id = models.ForeignKey(Good)
-    reservation_id = models.ForeignKey(Reservation)
-
 
