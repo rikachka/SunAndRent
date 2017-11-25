@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^search_goods$', views.search_items_goods, name='search_goods'),
     url(r'^item_stored/(?P<item_pk>[0-9]+)', views.item_stored_fullinfo, name='item_stored_fullinfo'),
     url(r'^item_rented/(?P<item_pk>[0-9]+)', views.item_rented_fullinfo, name='item_rented_fullinfo'),
+    url(r'^item_good/(?P<item_pk>[0-9]+)', views.item_good_fullinfo, name='item_good_fullinfo'),
 ]
