@@ -30,3 +30,11 @@ def catalogue_goods(request):
     items = Good.objects.all()
     template = loader.get_template('things/catalogue_goods.html')
     return HttpResponse(template.render({'good_items' : items}, request))
+
+
+def return_good_to_owner(request):
+    pk = 1
+    good = Good.objects.get(pk=pk)
+    good.status = '1'
+    good.save()
+    return HttpResponse(template.render({}, request))
