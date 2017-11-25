@@ -31,7 +31,7 @@ def catalogue_rented(request):
 
 
 def catalogue_goods(request):
-    items = Good.objects.all()
+    items = Good.objects.all().exclude(owner_id__exact=CUSTOMER_INDEX)
     template = loader.get_template('things/catalogue_goods.html')
     return HttpResponse(template.render({'good_items' : items}, request))
 
@@ -75,7 +75,7 @@ def rent_item(request, item_pk):
 
 
 def return_item(request, item_pk):
-    Reservation.objects.filter(pk=item_pk).update(end_date=timezone.now())
+    Reservation.objects.filter(pk=item_pk).update(return_date=timezone.now())
     return HttpResponseRedirect(reverse('catalogue_rented'))
 
 

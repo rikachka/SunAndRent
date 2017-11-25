@@ -55,6 +55,9 @@
                 </div>
                 <br>
                 <div>Rented from {{ item.start_date }} to {{ item.end_date }}</div>
+                {% if item.return_date %}
+                    <div>Returned on {{ item.return_date }}</div>
+                {% endif %}
             </div>
             <form action="{% url 'return_item' item.pk %}" method="post">
                 {% csrf_token %}
