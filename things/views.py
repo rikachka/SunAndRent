@@ -56,3 +56,9 @@ def item_stored_fullinfo(request, item_pk):
     item = StoragedGood.objects.get(pk=item_pk)
     template = loader.get_template('things/item_stored_fullinfo.html')
     return HttpResponse(template.render({'item' : item}, request))
+
+
+def item_rented_fullinfo(request, item_pk):
+    item = Reservation.objects.get(pk=item_pk)
+    template = loader.get_template('things/item_rented_fullinfo.html')
+    return HttpResponse(template.render({'item' : item}, request))
