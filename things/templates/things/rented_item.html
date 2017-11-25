@@ -28,6 +28,12 @@
                 background-color: forestgreen;
                 border: 0 !important;
             }
+            .item-title > a {
+                text-decoration: none;
+            }
+            .item-picture {
+                margin: 0 20px 0 0;
+            }
         </style>
 </head>
 <body>
@@ -37,7 +43,11 @@
                 <img src={% static item.good_id.image_path %} height="100px">
             </div>
             <div class="item-info">
-                <div><h3>{{ item.good_id.title }}</h3></div>
+                <div class="item-title">
+                    <a href="{% url 'item_rented_fullinfo' item.pk %}">
+                        <h3>{{ item.good_id.title }}</h3>
+                    </a>
+                </div>
                 <div>
                     {{ item.good_id.good_info }}
                     <br> Description description description
