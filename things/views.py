@@ -15,3 +15,8 @@ def catalogue_stored(request):
 
 def index2(request):
     return HttpResponse("Hello, world. You're at the index2.")
+
+def get_stored_by_person_id(request):
+    owner = Customer.objects.get(pk=request['id'])
+    items = Good.objects.filter(ownwer_id=owner)
+    return items
