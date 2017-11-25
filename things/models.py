@@ -1,6 +1,13 @@
 from django.db import models
 
 
+RESERVATION_TYPES = (
+    ('0', 'is_rented'),
+    ('1', 'is_cancelled'),
+    ('2', 'is_declined')
+)
+
+
 class Customer(models.Model):
     login = models.CharField('login', max_length=200)
     first_name = models.CharField('first name', max_length=200)
@@ -14,8 +21,10 @@ class Customer(models.Model):
 
 
 class Good(models.Model):
+    title = models.CharField('title', max_length=100)
     owner_id = models.ForeignKey(Customer)
-    good_info = models.CharField('good info', max_length=200)
+    good_info = models.CharField('good info', max_length=1000)
+    reservation_type = models.CharField('type', max_length=1, choices=RESERVATION_TYPES)
     
     def __str__(self):
         return self.good_info
