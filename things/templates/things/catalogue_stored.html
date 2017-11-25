@@ -13,7 +13,7 @@
     </head>
     <body>
         <div><h2>Storage</h2></div>
-        <textarea class="search" placeholder="Search" rows="1"></textarea>
+        <input class="search" placeholder="Search" type="text"></input>
         {% for item in stored_items %}
             {% include "things/stored_item.html" %}
         {% endfor %}
