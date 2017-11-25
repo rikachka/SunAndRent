@@ -58,7 +58,7 @@ def search_items_goods(request):
 
 
 def return_good_to_owner(request, item_pk):
-    good = Good.objects.get(pk=item_pk).update(status='1')
+    good = Good.objects.filter(pk=item_pk).update(status='1')
     return HttpResponseRedirect(reverse('catalogue_stored'))
 
 
