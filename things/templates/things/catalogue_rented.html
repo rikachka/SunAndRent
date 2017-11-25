@@ -9,11 +9,23 @@
             .search {
                 width: 100%;
             }
+            .search-flex-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
         <div><h2>Rent</h2></div>
-        <input class="search" placeholder="Search" type="text"></input>
+        <form action="{% url 'search_rented' %}" method="get">
+            {% csrf_token %}
+            <div class="search-flex-container">
+                <input class="search" placeholder="Type key word here" type="text" name="search_field"></input>
+                <div><button>Search</button></div>
+            </div>
+        </form>
+        
         {% for item in rented_items %}
             {% include "things/rented_item.html" %}
         {% endfor %}

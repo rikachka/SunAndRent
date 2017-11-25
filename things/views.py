@@ -22,7 +22,7 @@ def catalogue_stored(request):
 
 
 def catalogue_rented(request):
-    customer = Customer.objects.get(pk=2)
+    customer = Customer.objects.get(pk=CUSTOMER_INDEX)
     items = Reservation.objects.filter(customer_id=customer)
     template = loader.get_template('things/catalogue_rented.html')
     return HttpResponse(template.render({'rented_items' : items}, request))
@@ -34,9 +34,25 @@ def catalogue_goods(request):
     return HttpResponse(template.render({'good_items' : items}, request))
 
 
-def search_items(request):
-    search_query = 'knife'
-    items = Good.objects.filter(good_info__contains=search_query)
+def search_items_rented(request):
+    key_word = request.GET['search_field']
+    customer = Customer.objects.get(pk=CUSTOMER_INDEX)
+    items = Reservation.objects.filter(customer_id=customer).filter(good_id__good_info__contains=key_word)
+    template = loader.get_template('things/catalogue_rented.html')
+    return HttpResponse(template.render({'rented_items' : items}, request))
+
+
+def search_items_stored(request):
+    key_word = request.GET['search_field']
+    owner = Customer.objects.get(pk=CUSTOMER_INDEX)
+    items = StoragedGood.objects.filter(good_id__status='0').filter(good_id__owner_id=owner).filter(good_id__good_info__contains=key_word)
+    template = loader.get_template('things/catalogue_stored.html')
+    return HttpResponse(template.render({'stored_items' : items}, request))
+
+
+def search_items_goods(request):
+    key_word = request.GET['search_field']
+    items = Good.objects.filter(good_info__contains=key_word)
     template = loader.get_template('things/catalogue_goods.html')
     return HttpResponse(template.render({'good_items' : items}, request))
 

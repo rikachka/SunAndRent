@@ -9,11 +9,22 @@
             .search {
                 width: 100%;
             }
+            .search-flex-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
         <div><h2>Catalogue</h2></div>
-        <input class="search" placeholder="Search" type="text"></input>
+        <form action="{% url 'search_goods' %}" method="get">
+            {% csrf_token %}
+            <div class="search-flex-container">
+                <input class="search" placeholder="Type key word here" type="text" name="search_field"></input>
+                <div><button>Search</button></div>
+            </div>
+        </form>
         {% for item in good_items %}
             {% include "things/good_item.html" %}
         {% endfor %}
