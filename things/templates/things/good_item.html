@@ -14,9 +14,10 @@
                 flex-grow: 100;
             }
             .item {
-                border: 1px solid black;
+                border: 1px solid lightgrey;
+                border-width: 0 0 1px 0;
                 margin: 10px 0;
-                padding: 0 10px 5px 5px;
+                padding: 0 0 10px;
             }
             .item-button {
                 width: 100px;
@@ -36,13 +37,12 @@
                 <img src="{% static 'images/square.png' %}" height="100px">
             </div>
             <div class="item-info">
-                <div><h3>{{ item.good_id.title }}</h3></div>
+                <div><h3>{{ item.title }}</h3></div>
                 <div>
-                    {{ item.good_id.good_info }}
+                    {{ item.good_info }}
                     <br> Description description description
                     <br> Description description description
                 </div>
-                <div>Stored since {{ item.start_date }}</div>
             </div>
             <div><button class="item-button">Rent</button></div>
         </div>
