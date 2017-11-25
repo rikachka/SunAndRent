@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^catalogue_rented$', views.catalogue_rented, name='catalogue_rented'),
     url(r'^receive_back_item/(?P<item_pk>[0-9]+)$', views.receive_back_item, name='receive_back_item'),
     url(r'^rent_item/(?P<item_pk>[0-9]+)$', views.rent_item, name='rent_item'),
+    url(r'^return_item/(?P<item_pk>[0-9]+)$', views.return_item, name='return_item'),
     url(r'^search_rented$', views.search_items_rented, name='search_rented'),
     url(r'^search_stored$', views.search_items_stored, name='search_stored'),
     url(r'^search_goods$', views.search_items_goods, name='search_goods'),

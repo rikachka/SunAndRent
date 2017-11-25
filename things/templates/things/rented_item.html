@@ -54,9 +54,9 @@
                     <br> Description description description
                 </div>
                 <br>
-                <div>Rented since: {{ item.start_date }}</div>
+                <div>Rented from {{ item.start_date }} to {{ item.end_date }}</div>
             </div>
-            <form action="{% url 'rent_item' item.pk %}" method="post">
+            <form action="{% url 'return_item' item.pk %}" method="post">
                 {% csrf_token %}
                 <div><button class="item-button">Return</button></div>
             </form>
