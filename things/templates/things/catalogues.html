@@ -17,25 +17,26 @@
                 padding: 3%;
                 text-align: center;
             }
-
-            .items-block > a {
-                color: black;
-                text-decoration: none;
-            }
         </style>
     </head>
     <body>
+        <body>
         <div class="catalogues">
-            <div class="items-block">
-                <a href="{% url 'catalogue_stored' %}">Catalogue</a>
-            </div>
-            <div class="items-block">
-                <a href="{% url 'catalogue_stored' %}">Storage</a>
-            </div>
-            <div class="items-block">
-                <a href="{% url 'catalogue_stored' %}">Rent</a>
-            </div>
+            <div class="items-block" onclick="catalogues_all()">Catalogue</div>
+            <div class="items-block" onclick="catalogues_storage()">Storage</div>
+            <div class="items-block" onclick="catalogues_rent()">Rent</div>
         </div>
     </body>
     </html>
+    <script>
+        function catalogues_all() {
+            window.location.replace("{% url 'catalogue_stored' %}");
+        }
+        function catalogues_storage() {
+            window.location.replace("{% url 'catalogue_stored' %}");
+        }
+        function catalogues_rent() {
+            window.location.replace("{% url 'catalogue_stored' %}");
+        }
+    </script>
 {% endblock %}
