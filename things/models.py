@@ -25,6 +25,7 @@ class Good(models.Model):
     owner_id = models.ForeignKey(Customer)
     good_info = models.CharField('good info', max_length=1000)
     reservation_type = models.CharField('type', max_length=1, choices=RESERVATION_TYPES)
+    image_path = models.CharField('image', max_length=200)
     
     def __str__(self):
         return self.good_info

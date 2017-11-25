@@ -33,12 +33,12 @@
     <div class="item">
         <div class="item-flex-container">
             <div class="item-picture">
-                <img src="{% static 'images/square.png' %}" height="100px">
+                <img src={% static item.good_id.image_path %} height="100px">
             </div>
             <div class="item-info">
-                <div><h3>{{ item.good_id.good_info }}</h3></div>
+                <div><h3>{{ item.good_id.title }}</h3></div>
                 <div>
-                    Description description description
+                    {{ item.good_id.good_info }}
                     <br> Description description description
                     <br> Description description description
                 </div>

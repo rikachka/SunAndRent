@@ -1,16 +1,51 @@
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-    </style>
+        <style>
+            .item-flex-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .item-info {
+                flex-grow: 100;
+            }
+            .item {
+                border: 1px solid black;
+                margin: 10px 0;
+                padding: 0 10px 5px 5px;
+            }
+            .item-button {
+                width: 100px;
+                padding: 10px;
+                background-color: limegreen;
+            }
+            .item-button:active {
+                background-color: forestgreen;
+                border: 0 !important;
+            }
+        </style>
 </head>
 <body>
-    <div>
-        {{ item.pk }}
-        {{ item.good_info }}
-        {{ item.owner_id.first_name }}
-        {{ item.owner_id.last_name }}
+    <div class="item">
+        <div class="item-flex-container">
+            <div class="item-picture">
+                <img src="{% static 'images/square.png' %}" height="100px">
+            </div>
+            <div class="item-info">
+                <div><h3>{{ item.good_id.title }}</h3></div>
+                <div>
+                    {{ item.good_id.good_info }}
+                    <br> Description description description
+                    <br> Description description description
+                </div>
+                <div>Stored since {{ item.start_date }}</div>
+            </div>
+            <div><button class="item-button">Rent</button></div>
+        </div>
     </div>
 </body>
 </html>
