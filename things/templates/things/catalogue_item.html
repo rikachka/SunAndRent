@@ -8,7 +8,10 @@
 <body>
     <div>
         {{ item.pk }}
-        {{ item.good_info }}
+        {{ item.good_id.good_info }}
+        {{ item.good_id.owner_id.first_name }}
+        {{ item.good_id.owner_id.last_name }}
+        {{ item.start_date }}
     </div>
 </body>
 </html>
