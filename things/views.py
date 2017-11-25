@@ -22,7 +22,7 @@ def catalogue_stored(request):
 
 
 def catalogue_rented(request):
-    customer = Customer.objects.get(pk=CUSTOMER_INDEX)
+    customer = Customer.objects.get(pk=2)
     items = Reservation.objects.filter(customer_id=customer)
     template = loader.get_template('things/catalogue_rented.html')
     return HttpResponse(template.render({'rented_items' : items}, request))

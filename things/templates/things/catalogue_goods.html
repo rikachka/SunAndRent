@@ -12,8 +12,8 @@
         </style>
     </head>
     <body>
-        <div>Storage</div>
-        <textarea class="search" placeholder="Search" rows="1"></textarea>
+        <div><h2>Catalogue</h2></div>
+        <input class="search" placeholder="Search" type="text"></input>
         {% for item in good_items %}
             {% include "things/good_item.html" %}
         {% endfor %}

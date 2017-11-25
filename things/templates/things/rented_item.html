@@ -1,17 +1,56 @@
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-    </style>
+        <style>
+            .item-flex-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .item-info {
+                flex-grow: 100;
+            }
+            .item {
+                border: 1px solid lightgrey;
+                border-width: 0 0 1px 0;
+                margin: 10px 0;
+                padding: 0 0 10px;
+            }
+            .item-button {
+                width: 100px;
+                padding: 10px;
+                background-color: limegreen;
+            }
+            .item-button:active {
+                background-color: forestgreen;
+                border: 0 !important;
+            }
+        </style>
 </head>
 <body>
-    <div>
-        {{ item.pk }}
-        {{ item.good_id.good_info }}
-        {{ item.good_id.owner_id.first_name }}
-        {{ item.good_id.owner_id.last_name }}
-        {{ item.start_date }}
+    <div class="item">
+        <div class="item-flex-container">
+            <div class="item-picture">
+                <img src={% static item.good_id.image_path %} height="100px">
+            </div>
+            <div class="item-info">
+                <div><h3>{{ item.good_id.title }}</h3></div>
+                <div>
+                    {{ item.good_id.good_info }}
+                    <br> Description description description
+                    <br> Description description description
+                </div>
+                <br>
+                <div>Rented since: {{ item.start_date }}</div>
+            </div>
+            <form action="{% url 'return_good_to_owner' item.pk %}" method="post">
+                {% csrf_token %}
+                <div><button class="item-button">Return</button></div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
