@@ -9,44 +9,72 @@
         <title>Title</title>
             <style>
                 .item-flex-container {
-                    margin: 10px 0;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .item-fullinfo-button {
+                    width: 300px;
+                    padding: 10px;
+                    background-color: limegreen;
+                }
+                .item-fullinfo-button:active {
+                    background-color: forestgreen;
+                    border: 0 !important;
                 }
                 .item-info {
                     flex-grow: 100;
                 }
-                .item-button {
-                    width: 100px;
-                    padding: 10px;
-                    background-color: limegreen;
+                .item-picture {
+                    padding: 0 30px 0 0;
                 }
-                .item-button:active {
-                    background-color: forestgreen;
-                    border: 0 !important;
-                }
-                .item-title > h2 {
-                    margin-bottom: 0;
+                .item-picture > * {
+                    margin: 0 0 20px 0;
                 }
             </style>
     </head>
     <body>
         <div class="item">
+            <div class="item-title"><h2>{{ item.good_id.title }}</h2></div>
             <div class="item-flex-container">
-                <div class="item-title"><h2>{{ item.good_id.title }}</h2></div>
                 <div class="item-picture">
-                    <img src={% static item.good_id.image_path %} height="400px">
+                    <img src={% static item.good_id.image_path %} height="300px">
+                    <form action="{% url 'return_good_to_owner' item.pk %}" method="post">
+                        {% csrf_token %}
+                        <div><button class="item-fullinfo-button">Receive back</button></div>
+                    </form>
                 </div>
-                <div>
-                    {{ item.good_id.good_info }}
-                    <br> Description description description
-                    <br> Description description description
+                <div class="item-info">
+                    <div>
+                        {{ item.good_id.good_info }}
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                        <br> Description description description description description description
+                    </div>
+                    <br>
+                    <div>Stored since: {{ item.start_date }}</div>
                 </div>
-                <div>Stored since: {{ item.start_date }}</div>
             </div>
-
-            <form action="{% url 'return_good_to_owner' item.pk %}" method="post">
-                {% csrf_token %}
-                <div><button class="item-button">Receive back</button></div>
-            </form>
         </div>
     </body>
     </html>
