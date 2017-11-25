@@ -7,23 +7,62 @@
     <style>
         .header {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             margin: 1em 0;
         }
-
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .tab {
+            padding: 10px 0;
+            width: 100px;
+            border: 1px solid lightgrey;
+            border-width: 0 2px 0 0;
+            border-radius: 0;
+            background-color: white;
+        }
+        .tab:last-of-type {
+            border-width: 0;
+        }
+        .tab:active {
+            background-color: lightgrey;
+            color: black;
+        }
+        .user {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
         .avatar {
             margin: 0 7px;
-        }
-
-        .header-items-block {
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="avatar"><img src="{% static 'images/user.svg' %}" height="20px"></div>
-        <div class="header-items-block">John Snow</div>
+        <div class="tabs">
+            <button class="tab" onclick="catalogues_all()">Catalogue</button>
+            <button class="tab" onclick="catalogues_storage()">Storage</button>
+            <button class="tab" onclick="catalogues_rent()">Rent</button>
+        </div>
+        <div class="user">
+            <div class="avatar"><img src="{% static 'images/user.svg' %}" height="20px"></div>
+            <div>John Snow</div>
+        </div>
     </div>
 </body>
 </html>
+<script>
+    function catalogues_all() {
+        window.location.href = "{% url 'catalogue_goods' %}";
+    }
+    function catalogues_storage() {
+        window.location.href = "{% url 'catalogue_stored' %}";
+    }
+    function catalogues_rent() {
+        window.location.href = "{% url 'catalogue_rented' %}";
+    }
+</script>
