@@ -16,7 +16,16 @@
             .item {
                 border: 1px solid black;
                 margin: 10px 0;
-                padding: 5px;
+                padding: 0 10px 5px 5px;
+            }
+            .item-button {
+                width: 100px;
+                padding: 10px;
+                background-color: limegreen;
+            }
+            .item-button:active {
+                background-color: forestgreen;
+                border: 0 !important;
             }
         </style>
 </head>
@@ -35,7 +44,7 @@
                 </div>
                 <div>Stored since {{ item.start_date }}</div>
             </div>
-            <div><button>Return</button></div>
+            <div><button class="item-button">Return</button></div>
         </div>
     </div>
 </body>
