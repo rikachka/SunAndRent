@@ -32,8 +32,13 @@ def catalogue_rented(request):
 
 def catalogue_goods(request):
     items = Good.objects.all().exclude(owner_id__exact=CUSTOMER_INDEX)
+    adjacent_reservations = Reservation.objects.filter(good_id__in=items)
+    result_items = []
+    for item in items:
+        if len(adjacent_reservations.filter(good_id=item.pk)) == 0:
+            result_items.append(item)
     template = loader.get_template('things/catalogue_goods.html')
-    return HttpResponse(template.render({'good_items' : items}, request))
+    return HttpResponse(template.render({'good_items' : result_items}, request))
 
 
 def search_items_rented(request):
