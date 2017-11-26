@@ -37,7 +37,7 @@
             <div class="item-title"><h2>{{ item.title }}</h2></div>
             <div class="item-flex-container">
                 <div class="item-picture">
-                    <img src={% static item.image_path %} height="300px">
+                    <img src={% static item.image_path %} width="300px">
                     <form action="{% url 'rent_item' item.pk %}" method="post">
                         {% csrf_token %}
                         <div><button class="item-fullinfo-button">Rent</button></div>
