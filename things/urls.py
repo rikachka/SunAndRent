@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.views.generic.base import RedirectView
 
 from . import views
 
@@ -16,4 +17,5 @@ urlpatterns = [
     url(r'^item_rented/(?P<item_pk>[0-9]+)', views.item_rented_fullinfo, name='item_rented_fullinfo'),
     url(r'^item_good/(?P<item_pk>[0-9]+)', views.item_good_fullinfo, name='item_good_fullinfo'),
     url(r'^reset_status', views.reset_status, name='reset_status'),
+    url(r'^.*$', RedirectView.as_view(url='catalogue_goods', permanent=False))
 ]
