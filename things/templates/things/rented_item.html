@@ -64,7 +64,7 @@
                     {{ item.good_id.good_info|slice:":230" }}...
                 </div>
                 <br>
-                <div>Rented from {{ item.start_date }} to {{ item.end_date }}</div>
+                <div>Rented from {{ item.start_date|date:"d.m.y" }} to {{ item.end_date|date:"d.m.y" }}</div>
                 {% if item.return_date %}
                     <div>Returned on {{ item.return_date }}</div>
                 {% endif %}

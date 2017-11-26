@@ -48,7 +48,7 @@
                         {{ item.good_id.good_info }}
                     </div>
                     <br>
-                    <div>Stored since: {{ item.start_date }}</div>
+                    <div>Stored since: {{ item.start_date|date:"d.m.y" }}</div>
                 </div>
             </div>
         </div>
