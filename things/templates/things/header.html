@@ -9,7 +9,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 1em 0;
+            padding: 1em 0;
+            margin: 2px 0;
+            background-color: #6ebb01;
         }
         .tabs {
             display: flex;
@@ -18,23 +20,25 @@
         }
         .tab {
             padding: 10px 0;
-            width: 100px;
-            border: 1px solid lightgrey;
+            width: 150px;
+            border: 1px solid black;
             border-width: 0 2px 0 0;
             border-radius: 0;
-            background-color: white;
+            background-color: #6ebb01;
+            font-size: 15px;
         }
         .tab:last-of-type {
             border-width: 0;
         }
         .tab:active {
-            background-color: lightgrey;
+            background-color: green;
             color: black;
         }
         .user {
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            padding-right: 20px;
         }
         .avatar {
             margin: 0 7px;
@@ -42,18 +46,20 @@
     </style>
 </head>
 <body>
-    <div>
-        <img src="{% static 'images/house2.jpg' %}" width="100%">
-    </div>
-    <div class="header">
-        <div class="tabs">
-            <button class="tab" onclick="catalogues_all()">Catalogue</button>
-            <button class="tab" onclick="catalogues_storage()">Storage</button>
-            <button class="tab" onclick="catalogues_rent()">Rent</button>
+    <div class="outer-header">
+        <div>
+            <img src="{% static 'images/house2.jpg' %}" width="100%">
         </div>
-        <div class="user">
-            <div class="avatar"><img src="{% static 'images/user.svg' %}" height="20px"></div>
-            <div>John Snow</div>
+        <div class="header">
+            <div class="tabs">
+                <button class="tab" onclick="catalogues_all()">Catalogue</button>
+                <button class="tab" onclick="catalogues_storage()">Storage</button>
+                <button class="tab" onclick="catalogues_rent()">Rent</button>
+            </div>
+            <div class="user">
+                <div class="avatar"><img src="{% static 'images/user.svg' %}" height="20px"></div>
+                <div>John Snow</div>
+            </div>
         </div>
     </div>
 </body>
