@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="item-description">
-                    {{ item.good_id.good_info }}
+                    {{ item.good_id.good_info|slice:":230" }}...
                 </div>
                 <br>
                 <div>Stored since: {{ item.start_date }}</div>
