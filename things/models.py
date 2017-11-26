@@ -24,7 +24,7 @@ class Customer(models.Model):
     address = models.CharField('address', max_length=200)
     
     def __str__(self):
-        return self.login
+        return str(self.id) + " " + self.last_name
 
 
 class Good(models.Model):
@@ -36,7 +36,7 @@ class Good(models.Model):
     status = models.CharField('status', max_length=1, choices=GOOD_STATUS)
     
     def __str__(self):
-        return self.good_info
+        return '{} {}'.format(self.pk, self.title)
 
 
 class StoragedGood(models.Model):
