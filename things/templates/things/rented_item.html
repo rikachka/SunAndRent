@@ -37,19 +37,10 @@
             .item-description {
                 margin: 0 20px 0 0;
             }
-            .item[status=returned] {
-                background-color: #6ebb016e;
-            }
-            .item[status=expired] {
-                background-color: #ff121240;
-            }
-            .item[status=current] {
-                background-color: #ffff0033;
-            }
         </style>
 </head>
 <body>
-    <div class="item" id="item_{{ item.good_id.pk }}" status="javascript:item_status">
+    <div class="item" id="item_{{ item.good_id.pk }}">
         <div class="item-flex-container">
             <div class="item-picture">
                 <img src={% static item.good_id.image_path %} width="100px">
@@ -77,8 +68,3 @@
     </div>
 </body>
 </html>
-<script>
-    window.onload = function() {
-        document.getElementById('item_5').style.background = 'red';
-    }
-</script>

@@ -48,7 +48,10 @@
                         {{ item.good_id.good_info }}
                     </div>
                     <br>
-                    <div>Rented since: {{ item.start_date|date:"d.m.y" }}</div>
+                    <div>Rented since: {{ item.start_date|date:"d.m.y" }} to {{ item.end_date|date:"d.m.y" }} </div>
+                    {% if item.return_date %}
+                        <div>Returned on {{ item.return_date }}</div>
+                    {% endif %}
                 </div>
             </div>
         </div>
